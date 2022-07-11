@@ -1,4 +1,4 @@
-unison_version:=2.52.0
+unison_version:=2.52.1
 
 .PHONY: image
 image: Dockerfile
