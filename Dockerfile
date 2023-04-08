@@ -1,8 +1,11 @@
-FROM ubuntu:20.04 AS build
+ARG ubuntu_version
+
+
+FROM ubuntu:${ubuntu_version} AS build
 ARG unison_version
 WORKDIR /tmp
 
-RUN true \
+RUN : \
 && apt update \
 && env DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends \
 	ca-certificates \
@@ -10,16 +13,16 @@ RUN true \
 	make \
 	ocaml-nox \
 && rm -Rf /var/{cache/apt,lib/apt/lists,log/{alternatives.log,apt,dpkg.log}} \
-&& true
+;
 
 RUN curl -sL https://github.com/bcpierce00/unison/archive/v${unison_version}.tar.gz | tar -xzf -
 
-RUN true \
+RUN : \
 && make -C unison-${unison_version}/src/ UISTYLE=text \
 && mkdir -p /tmp/install/usr/local/bin \
 && cp unison-${unison_version}/src/unison /tmp/install/usr/local/bin/ \
-&& true
+;
 
 
-FROM ubuntu:20.04
+FROM ubuntu:${ubuntu_version}
 COPY --from=build /tmp/install /
