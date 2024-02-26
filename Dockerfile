@@ -18,7 +18,7 @@ RUN : \
 RUN curl -sL https://github.com/bcpierce00/unison/archive/v${unison_version}.tar.gz | tar -xzf -
 
 RUN : \
-&& make -C unison-${unison_version}/src/ UISTYLE=text \
+&& make -C unison-${unison_version}/src/ \
 && mkdir -p /tmp/install/usr/local/bin \
 && cp unison-${unison_version}/src/unison /tmp/install/usr/local/bin/ \
 ;
