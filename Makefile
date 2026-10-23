@@ -1,5 +1,5 @@
-ubuntu_version:=22.04
-unison_version:=2.53.7
+ubuntu_version:=24.04
+unison_version:=2.53.8
 tag:=elieux/ubuntu-unison:$(unison_version)-ubuntu$(ubuntu_version)
 
 .PHONY: image
