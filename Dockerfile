@@ -11,7 +11,7 @@ RUN : \
 	ca-certificates \
 	curl \
 	make \
-	ocaml-nox \
+	ocaml \
 && rm -Rf /var/{cache/apt,lib/apt/lists,log/{alternatives.log,apt,dpkg.log}} \
 ;
 

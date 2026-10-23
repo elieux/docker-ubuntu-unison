@@ -1,15 +1,15 @@
-ubuntu_version:=24.04
-unison_version:=2.53.8
+ubuntu_version:=26.04
+unison_version:=2.54.0
 tag:=elieux/ubuntu-unison:$(unison_version)-ubuntu$(ubuntu_version)
 
-.PHONY: image
-image: Dockerfile
+.PHONY: build
+build: Dockerfile
 	docker build . \
 		--pull \
 		--build-arg ubuntu_version=$(ubuntu_version) \
 		--build-arg unison_version=$(unison_version) \
 		-t $(tag)
 
-.PHONY: upload
-upload:
+.PHONY: push
+push:
 	docker push $(tag)
